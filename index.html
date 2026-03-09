@@ -8,13 +8,14 @@
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Playfair Display, Open Sans, Cormorant Garamond, Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome per icone -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* Palette Colori Moderni: Ruggine, Beige, Verde Scuro, Bianco Rotto, Grigio Chiaro */
     :root {
       --rust: #a14e2a;
       --light-rust: #d4a574;
@@ -34,34 +35,7 @@
       overflow-x: hidden;
     }
 
-    /* Header */
-    .header {
-      background-color: var(--off-white);
-      padding: 1rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      height: 60px;
-      margin-right: 1rem;
-    }
-
-    .navbar-nav .nav-link {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      color: var(--dark-text) !important;
-      margin: 0 0.8rem;
-      transition: color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: var(--rust) !important;
-    }
-
-    /* Hero Section */
+    /* Hero Section Senza Sfumato */
     .hero {
       background: url('img/Commemorazione-eccidio-di-San-Benigno_1.jpg');
       background-size: cover;
@@ -71,6 +45,10 @@
       text-align: center;
       margin-bottom: 0;
       position: relative;
+    }
+
+    .hero::before {
+      content: none;
     }
 
     .hero-content {
@@ -93,11 +71,170 @@
       animation: fadeInDown 1s ease-out;
     }
 
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      margin: 0 auto;
+      font-weight: 300;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Sezioni di Contenuto con Sfondi Alternati */
+    .content-section {
+      padding: 5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-section:nth-child(odd) {
+      background-color: var(--off-white);
+    }
+
+    .content-section:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--rust);
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      display: block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--rust), var(--accent));
+      border-radius: 2px;
+    }
+
+    .content-section p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 1.8rem;
+      text-align: justify;
+      line-height: 1.9;
+      color: var(--dark-text);
+    }
+
+    /* Citazioni Senza Apici */
+    .quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--dark-green);
+      font-size: 1.4rem;
+      font-weight: 500;
+      border-left: 5px solid var(--accent);
+      padding-left: 2rem;
+      margin: 3rem auto;
+      max-width: 900px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      position: relative;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    /* Immagine Funerali */
+    .funeral-image {
+      width: 100%;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      display: block;
+    }
+
+    .funeral-image:hover {
+      transform: scale(1.01);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    .image-caption {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark-green);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 3rem; }
+      .hero p { font-size: 1.1rem; }
+      .section-title { font-size: 2rem; }
+      .quote { font-size: 1.2rem; padding: 1.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 100px 0; }
+      .hero-content { padding: 1.5rem; }
+      .content-section { padding: 3rem 0; }
+      .hero h1 { font-size: 2.5rem; }
+      .funeral-image { max-width: 100%; }
+    }
+
+    /* --- Nuovi stili per header e footer --- */
+    /* Header */
+    .header {
+      background-color: var(--off-white);
+      padding: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .logo {
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      color: var(--dark-text) !important;
+      margin: 0 0.8rem;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--rust) !important;
+    }
+
     /* Footer */
     .footer {
       background-color: var(--dark-green);
       color: var(--off-white);
       padding: 3rem 0 1rem;
+      margin-top: 2rem;
     }
 
     .footer a {
@@ -111,7 +248,7 @@
     }
 
     .footer-logo {
-      height: 50px;
+      height: 40px;
       margin-bottom: 1rem;
     }
 
@@ -132,17 +269,6 @@
       padding-top: 1rem;
       text-align: center;
       font-size: 0.9rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .hero h1 { font-size: 3rem; }
-      .navbar-nav { margin-top: 1rem; }
-    }
-
-    @media (max-width: 768px) {
-      .hero { padding: 100px 0; }
-      .hero h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
