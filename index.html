@@ -8,14 +8,13 @@
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Google Fonts: Playfair Display, Open Sans, Cormorant Garamond, Montserrat -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome per icone -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Palette Colori Moderni: Ruggine, Beige, Verde Scuro, Bianco Rotto, Grigio Chiaro */
     :root {
       --rust: #a14e2a;
       --light-rust: #d4a574;
@@ -35,7 +34,35 @@
       overflow-x: hidden;
     }
 
-    /* Hero Section Senza Sfumato */
+    /* Header */
+    .header {
+      background-color: var(--off-white);
+      padding: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .logo {
+      height: 50px;
+      margin: 0 1rem;
+      max-width: 150px;
+      object-fit: contain;
+    }
+
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      color: var(--dark-text) !important;
+      margin: 0 0.8rem;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--rust) !important;
+    }
+
+    /* Hero Section */
     .hero {
       background: url('img/Commemorazione-eccidio-di-San-Benigno_1.jpg');
       background-size: cover;
@@ -45,10 +72,6 @@
       text-align: center;
       margin-bottom: 0;
       position: relative;
-    }
-
-    .hero::before {
-      content: none;
     }
 
     .hero-content {
@@ -79,17 +102,7 @@
       animation: fadeInUp 1s ease-out 0.3s both;
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Sezioni di Contenuto con Sfondi Alternati */
+    /* Sezioni di Contenuto */
     .content-section {
       padding: 5rem 0;
       margin-bottom: 2rem;
@@ -137,7 +150,7 @@
       color: var(--dark-text);
     }
 
-    /* Citazioni Senza Apici */
+    /* Citazioni */
     .quote {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -181,54 +194,6 @@
       font-style: italic;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .hero h1 { font-size: 3rem; }
-      .hero p { font-size: 1.1rem; }
-      .section-title { font-size: 2rem; }
-      .quote { font-size: 1.2rem; padding: 1.5rem; }
-    }
-
-    @media (max-width: 768px) {
-      .hero { padding: 100px 0; }
-      .hero-content { padding: 1.5rem; }
-      .content-section { padding: 3rem 0; }
-      .hero h1 { font-size: 2.5rem; }
-      .funeral-image { max-width: 100%; }
-    }
-
-    /* --- Nuovi stili per header e footer --- */
-    /* Header */
-    .header {
-      background-color: var(--off-white);
-      padding: 1rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      position: relative;
-      z-index: 1000;
-    }
-
-    .logo {
-      height: 50px;
-      margin-right: 1rem;
-    }
-
-    .navbar-nav .nav-link {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      color: var(--dark-text) !important;
-      margin: 0 0.8rem;
-      transition: color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: var(--rust) !important;
-    }
-
     /* Footer */
     .footer {
       background-color: var(--dark-green);
@@ -248,8 +213,10 @@
     }
 
     .footer-logo {
-      height: 40px;
-      margin-bottom: 1rem;
+      height: 45px;
+      margin: 0 1.5rem;
+      max-width: 140px;
+      object-fit: contain;
     }
 
     .social-icons a {
@@ -270,6 +237,24 @@
       text-align: center;
       font-size: 0.9rem;
     }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 3rem; }
+      .hero p { font-size: 1.1rem; }
+      .section-title { font-size: 2rem; }
+      .quote { font-size: 1.2rem; padding: 1.5rem; }
+      .logo, .footer-logo { height: 40px; margin: 0 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 100px 0; }
+      .hero-content { padding: 1.5rem; }
+      .content-section { padding: 3rem 0; }
+      .hero h1 { font-size: 2.5rem; }
+      .funeral-image { max-width: 100%; }
+      .logo, .footer-logo { height: 35px; margin: 0 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -281,8 +266,8 @@
         <div class="container-fluid">
           <!-- Loghi -->
           <a class="navbar-brand" href="#">
-            <img src="img/cmq.png" class="logo">
-            <img src="img/logo-associazione.png" alt="Associazione Martiri" class="logo">
+            <img src="img/logo1.png" class="logo">
+            <img src="img/logo2.png" class="logo">
           </a>
 
           <!-- Menu -->
@@ -292,9 +277,8 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Storia</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Eventi</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Contatti</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Fotogallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Partner</a></li>
             </ul>
           </div>
         </div>
@@ -354,31 +338,32 @@
     <div class="container">
       <div class="row">
         <!-- Loghi -->
-        <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
-          <img src="img/cmq.png" alt="San Benigno" class="footer-logo">
-          <img src="img/logo-associazione.png" alt="Associazione Martiri" class="footer-logo">
+        <div class="col-12 text-center mb-4">
+          <img src="img/logo1.png" alt="Logo 1" class="footer-logo">
+          <img src="img/logo2.png" alt="Logo 2" class="footer-logo">
         </div>
 
-        <!-- Social -->
-        <div class="col-md-4 text-center mb-4 mb-md-0">
-          <h5>Seguici</h5>
-          <div class="social-icons">
-            <a href="https://www.instagram.com/comitatofrazione_sanbenigno/"><i class="fab fa-instagram"></i></a>
+        <!-- Social e Contatti -->
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+            <h5>Seguici</h5>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/comitatofrazione_sanbenigno/"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="col-md-6 text-center text-md-end">
+            <h5>Contatti</h5>
+            <p><i class="fas fa-map-marker-alt me-2"></i>Via dell'Abbazia, 5 - San Benigno</p>
+            <p><i class="fas fa-phone me-2"></i>+39 011 1234567</p>
+            <p><i class="fas fa-envelope me-2"></i> cdq.sanbenigno@email.comune.cuneo.it</p>
           </div>
         </div>
 
-        <!-- Contatti -->
-        <div class="col-md-4 text-center text-md-end">
-          <h5>Contatti</h5>
-          <p><i class="fas fa-map-marker-alt me-2"></i>Via dell'Abbazia, 5 - San Benigno</p>
-          <p><i class="fas fa-phone me-2"></i>+39 011 1234567</p>
-          <p><i class="fas fa-envelope me-2"></i> cdq.sanbenigno@email.comune.cuneo.it</p>
+        <!-- Credits -->
+        <div class="footer-bottom">
+          <p>&copy; 2026 San Benigno | Martiri della Candelora | Tutti i diritti riservati</p>
         </div>
-      </div>
-
-      <!-- Credits -->
-      <div class="footer-bottom">
-        <p>&copy; 2026 San Benigno | Martiri della Candelora | Tutti i diritti riservati</p>
       </div>
     </div>
   </footer>
