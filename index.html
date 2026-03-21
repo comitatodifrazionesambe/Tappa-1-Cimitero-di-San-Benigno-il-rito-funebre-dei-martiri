@@ -22,6 +22,7 @@
       --light: #f8f6f3; /* Bianco caldo */
       --dark: #2a3a2a; /* Verde molto scuro */
       --text: #333333; /* Grigio scuro per il testo */
+      --text-light: #f8f6f3; /* Testo chiaro per sfondi scuri */
     }
 
     body {
@@ -101,27 +102,33 @@
     /* Sezioni di Contenuto */
     .content-section {
       padding: 4rem 0;
-      margin-bottom: 2rem;
     }
 
     .section-bg-light {
       background-color: var(--light);
     }
 
-    .section-bg-accent {
-      background-color: var(--accent);
-      color: var(--dark);
+    .section-bg-primary {
+      background-color: var(--primary);
+      color: var(--text-light);
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      color: var(--primary);
       font-size: 2.2rem;
       text-align: center;
       margin-bottom: 2.5rem;
       position: relative;
       display: inline-block;
       padding-bottom: 0.5rem;
+    }
+
+    .section-bg-light .section-title {
+      color: var(--primary);
+    }
+
+    .section-bg-primary .section-title {
+      color: var(--text-light);
     }
 
     .section-title::after {
@@ -132,8 +139,15 @@
       transform: translateX(-50%);
       width: 80px;
       height: 3px;
-      background: var(--accent);
       border-radius: 2px;
+    }
+
+    .section-bg-light .section-title::after {
+      background: var(--accent);
+    }
+
+    .section-bg-primary .section-title::after {
+      background: var(--accent);
     }
 
     .content-section p {
@@ -148,17 +162,25 @@
     .quote {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      color: var(--primary);
       font-size: 1.3rem;
       font-weight: 500;
       border-left: 4px solid var(--accent);
       padding-left: 1.5rem;
       margin: 2.5rem auto;
       max-width: 800px;
-      background-color: rgba(255, 255, 255, 0.95);
       padding: 1.8rem;
       border-radius: 6px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .section-bg-light .quote {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--primary);
+    }
+
+    .section-bg-primary .quote {
+      background-color: rgba(0, 0, 0, 0.1);
+      color: var(--text-light);
     }
 
     /* Immagine Funerali */
@@ -179,78 +201,28 @@
       text-align: center;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
-      color: var(--secondary);
       margin-top: 1rem;
       font-style: italic;
     }
 
-    /* Timeline */
-    .timeline {
-      position: relative;
-      padding: 2rem 0;
-      margin: 2rem 0;
+    .section-bg-light .image-caption {
+      color: var(--secondary);
     }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      background-color: var(--accent);
-    }
-
-    .timeline-item {
-      position: relative;
-      width: 50%;
-      padding: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-item:nth-child(odd) {
-      left: 0;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 50%;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      right: -10px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: var(--primary);
-      border: 3px solid var(--accent);
-    }
-
-    .timeline-item:nth-child(even)::before {
-      left: -10px;
-      right: auto;
-    }
-
-    .timeline-content {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 1.5rem;
-      border-radius: 6px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    .section-bg-primary .image-caption {
+      color: var(--text-light);
     }
 
     /* Footer */
     .footer {
       background-color: var(--primary);
-      color: var(--light);
+      color: var(--text-light);
       padding: 3rem 0 1rem;
       margin-top: 2rem;
     }
 
     .footer a {
-      color: var(--light);
+      color: var(--text-light);
       text-decoration: none;
       transition: color 0.3s ease;
     }
@@ -268,7 +240,7 @@
     }
 
     .social-icons a {
-      color: var(--light);
+      color: var(--text-light);
       font-size: 1.5rem;
       margin: 0 0.8rem;
       transition: color 0.3s ease;
@@ -293,19 +265,6 @@
       .section-title { font-size: 2rem; }
       .quote { font-size: 1.2rem; padding: 1.5rem; }
       .logo, .footer-logo { height: 40px; margin: 0 1rem; }
-
-      .timeline::before {
-        left: 30px;
-      }
-
-      .timeline-item {
-        width: calc(100% - 60px);
-        margin-left: 30px;
-      }
-
-      .timeline-item::before {
-        left: -10px;
-      }
     }
 
     @media (max-width: 768px) {
@@ -357,52 +316,21 @@
 
   <!-- Contenuto Principale -->
   <div class="container">
-    <!-- Sezione: La Sepoltura -->
+    <!-- Sezione: La Degna Sepoltura -->
     <section class="content-section section-bg-light">
       <div class="container">
         <h2 class="section-title">La Degna Sepoltura</h2>
         <p>La fine della guerra rese possibile un gesto atteso per mesi dalla comunità di San Benigno: dare degna sepoltura ai tredici giovani uccisi il 2 febbraio 1945 nella rappresaglia nazifascista.</p>
-
-        <div class="quote">
-          Un gesto di rispetto e memoria per chi aveva sacrificato la propria vita per la libertà.
-        </div>
       </div>
     </section>
 
-    <!-- Sezione: La Cerimonia -->
-    <section class="content-section section-bg-accent">
+    <!-- Sezione: La Grande Cerimonia -->
+    <section class="content-section section-bg-primary">
       <div class="container">
         <h2 class="section-title">La Grande Cerimonia</h2>
+        <p>Il 18 novembre 1945 la frazione fu teatro di una grande cerimonia commemorativa, annunciata pubblicamente dal sindaco con un manifesto rivolto ai cittadini. L'invito sottolineava come la partecipazione collettiva dovesse rappresentare un segno di vicinanza alle famiglie colpite e, insieme, un tributo civile a chi era caduto "per la conquista della Libertà soffocata dal nazifascismo".</p>
 
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <h3>Il Manifesto del Sindaco</h3>
-              <p>Il 18 novembre 1945 la frazione fu teatro di una grande cerimonia commemorativa, annunciata pubblicamente dal sindaco con un manifesto rivolto ai cittadini.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <h3>Un Segno di Vicinanza</h3>
-              <p>L'invito sottolineava come la partecipazione collettiva dovesse rappresentare un segno di vicinanza alle famiglie colpite e, insieme, un tributo civile a chi era caduto "per la conquista della Libertà soffocata dal nazifascismo".</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <h3>Il Momento Commemorativo</h3>
-              <p>La giornata si aprì con un momento commemorativo nel luogo dell'eccidio: lo scoprimento di un ricordo marmoreo, la celebrazione della messa e l'orazione ufficiale delle autorità.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-content">
-              <h3>Le Solenni Esequie</h3>
-              <p>Seguirono poi le solenni esequie dei tredici caduti, accompagnate da una straordinaria partecipazione popolare.</p>
-            </div>
-          </div>
-        </div>
+        <p>La giornata si aprì con un momento commemorativo nel luogo dell'eccidio: lo scoprimento di un ricordo marmoreo, la celebrazione della messa e l'orazione ufficiale delle autorità. Seguirono poi le solenni esequie dei tredici caduti, accompagnate da una straordinaria partecipazione popolare.</p>
 
         <!-- Immagine dei funerali -->
         <img src="img/funerali.jpg" alt="Funerali dei martiri di San Benigno, 18 novembre 1945" class="funeral-image">
@@ -410,24 +338,17 @@
       </div>
     </section>
 
-    <!-- Sezione: La Tomba -->
+    <!-- Sezione: La Memoria Vivente -->
     <section class="content-section section-bg-light">
       <div class="container">
-        <h2 class="section-title">La Tomba dei Martiri</h2>
+        <h2 class="section-title">La Memoria Vivente</h2>
         <p>In quell'occasione venne inaugurata all'interno del cimitero della frazione una tomba appositamente costruita per custodire definitivamente le salme. Fino a quel momento i corpi erano stati deposti in una fossa comune, in attesa di una sepoltura definitiva che potesse restituire dignità individuale e memoria pubblica alle vittime.</p>
 
         <div class="quote">
           La lapide reca ancora oggi la scritta "Caduti per rappresaglia fascista", sintesi di una memoria che la comunità ha voluto consegnare alle generazioni successive.
         </div>
-      </div>
-    </section>
 
-    <!-- Sezione: La Memoria -->
-    <section class="content-section section-bg-accent">
-      <div class="container">
-        <h2 class="section-title">La Memoria Vivente</h2>
-        <p>Ogni anno, il 2 febbraio, San Benigno rinnova questo ricordo con una celebrazione religiosa, una cerimonia civile e la deposizione di una corona di fiori nel luogo esatto della fucilazione, davanti alla lapide che riporta i nomi delle vittime.</p>
-        <p>Alla loro memoria è dedicata anche la piazza centrale del paese, simbolo tangibile di un impegno collettivo che non si esaurisce nel tempo.</p>
+        <p>Ogni anno, il 2 febbraio, San Benigno rinnova questo ricordo con una celebrazione religiosa, una cerimonia civile e la deposizione di una corona di fiori nel luogo esatto della fucilazione, davanti alla lapide che riporta i nomi delle vittime. Alla loro memoria è dedicata anche la piazza centrale del paese.</p>
       </div>
     </section>
   </div>
