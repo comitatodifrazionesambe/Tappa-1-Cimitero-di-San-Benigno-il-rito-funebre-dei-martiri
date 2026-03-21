@@ -16,27 +16,27 @@
 
   <style>
     :root {
-      --rust: #8B4513; /* Marrone ruggine */
+      --rust: #8B4513; /* Marrone ruggine scuro (come il pannello) */
       --rust-light: #A0522D; /* Marrone ruggine chiaro */
       --beige: #F5F5DC; /* Beige naturale */
-      --cream: #e2e2e2; /* Crema */
+      --off-white: #fffdf7; /* Bianco caldo */
       --dark-text: #3D2B1F; /* Marrone scuro per testo */
       --light-text: #F5F5F5; /* Testo chiaro */
     }
 
     body {
       font-family: 'Open Sans', sans-serif;
-      background-color: var(--cream);
-      color: var(--dark-text);
+      background-color: var(--rust); /* Sfondo marrone ruggine come il pannello */
+      color: var(--light-text);
       line-height: 1.8;
       overflow-x: hidden;
     }
 
     /* Header */
     .header {
-      background-color: var(--cream);
+      background-color: var(--off-white);
       padding: 1rem 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       position: relative;
       z-index: 1000;
     }
@@ -62,7 +62,7 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/Commemorazione-eccidio-di-San-Benigno_1.jpg');
+      background: url('img/Commemorazione-eccidio-di-San-Benigno_1.jpg');
       background-size: cover;
       background-position: center;
       color: white;
@@ -70,6 +70,16 @@
       text-align: center;
       margin-bottom: 0;
       position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
     .hero-content {
@@ -83,11 +93,12 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
+      font-size: 4rem;
       font-weight: 700;
-      color: var(--light-text);
+      color: var(--off-white);
       margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      animation: fadeInDown 1s ease-out;
     }
 
     .hero p {
@@ -95,120 +106,141 @@
       font-size: 1.3rem;
       margin: 0 auto;
       font-weight: 300;
-      max-width: 700px;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Sezioni di Contenuto */
     .content-section {
-      padding: 4rem 0;
+      padding: 5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0;
+      position: relative;
+      overflow: hidden;
     }
 
-    .section-bg-light {
-      background-color: var(--cream);
+    .content-section:nth-child(odd) {
+      background-color: var(--off-white);
+      color: var(--dark-text);
     }
 
-    .section-bg-rust {
-      background-color: var(--rust);
+    .content-section:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.05);
       color: var(--light-text);
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      color: var(--rust);
+      font-size: 2.5rem;
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
       position: relative;
-      display: inline-block;
-      padding-bottom: 0.5rem;
+      display: block;
     }
 
-    .section-bg-light .section-title {
+    .content-section:nth-child(odd) .section-title {
       color: var(--rust);
     }
 
-    .section-bg-rust .section-title {
+    .content-section:nth-child(even) .section-title {
       color: var(--light-text);
     }
 
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
+      width: 100px;
+      height: 4px;
       border-radius: 2px;
     }
 
-    .section-bg-light .section-title::after {
-      background: var(--rust-light);
+    .content-section:nth-child(odd) .section-title::after {
+      background: linear-gradient(90deg, var(--rust), var(--rust-light));
     }
 
-    .section-bg-rust .section-title::after {
+    .content-section:nth-child(even) .section-title::after {
       background: var(--beige);
     }
 
     .content-section p {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.15rem;
+      margin-bottom: 1.8rem;
       text-align: justify;
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
     /* Citazioni */
     .quote {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 500;
-      border-left: 4px solid var(--rust-light);
-      padding-left: 1.5rem;
-      margin: 2.5rem auto;
-      max-width: 800px;
-      padding: 1.8rem;
-      border-radius: 6px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border-left: 5px solid;
+      padding-left: 2rem;
+      margin: 3rem auto;
+      max-width: 900px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      position: relative;
     }
 
-    .section-bg-light .quote {
-      background-color: rgba(255, 255, 255, 0.95);
+    .content-section:nth-child(odd) .quote {
+      border-color: var(--rust);
       color: var(--rust);
+      background-color: rgba(255, 255, 255, 0.95);
     }
 
-    .section-bg-rust .quote {
-      background-color: rgba(0, 0, 0, 0.1);
+    .content-section:nth-child(even) .quote {
+      border-color: var(--beige);
       color: var(--light-text);
+      background-color: rgba(0, 0, 0, 0.1);
     }
 
     /* Immagine Funerali */
     .funeral-image {
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 2rem auto;
-      border-radius: 6px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.4s ease;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      display: block;
     }
 
     .funeral-image:hover {
       transform: scale(1.01);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
     }
 
     .image-caption {
       text-align: center;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-top: 1rem;
       font-style: italic;
     }
 
-    .section-bg-light .image-caption {
+    .content-section:nth-child(odd) .image-caption {
       color: var(--rust);
     }
 
-    .section-bg-rust .image-caption {
+    .content-section:nth-child(even) .image-caption {
       color: var(--light-text);
     }
 
@@ -250,7 +282,7 @@
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
       margin-top: 2rem;
       padding-top: 1rem;
       text-align: center;
@@ -259,10 +291,9 @@
 
     /* Responsive */
     @media (max-width: 992px) {
-      .hero h1 { font-size: 2.8rem; }
+      .hero h1 { font-size: 3rem; }
       .hero p { font-size: 1.1rem; }
       .section-title { font-size: 2rem; }
-      .quote { font-size: 1.2rem; padding: 1.5rem; }
       .logo, .footer-logo { height: 40px; margin: 0 1rem; }
     }
 
@@ -270,7 +301,7 @@
       .hero { padding: 100px 0; }
       .hero-content { padding: 1.5rem; }
       .content-section { padding: 3rem 0; }
-      .hero h1 { font-size: 2.3rem; }
+      .hero h1 { font-size: 2.5rem; }
       .funeral-image { max-width: 100%; }
       .logo, .footer-logo { height: 35px; margin: 0 0.5rem; }
     }
@@ -316,7 +347,7 @@
   <!-- Contenuto Principale -->
   <div class="container">
     <!-- Sezione: La Degna Sepoltura -->
-    <section class="content-section section-bg-light">
+    <section class="content-section">
       <div class="container">
         <h2 class="section-title">La Degna Sepoltura</h2>
         <p>La fine della guerra rese possibile un gesto atteso per mesi dalla comunità di San Benigno: dare degna sepoltura ai tredici giovani uccisi il 2 febbraio 1945 nella rappresaglia nazifascista.</p>
@@ -324,7 +355,7 @@
     </section>
 
     <!-- Sezione: La Grande Cerimonia -->
-    <section class="content-section section-bg-rust">
+    <section class="content-section">
       <div class="container">
         <h2 class="section-title">La Grande Cerimonia</h2>
         <p>Il 18 novembre 1945 la frazione fu teatro di una grande cerimonia commemorativa, annunciata pubblicamente dal sindaco con un manifesto rivolto ai cittadini. L'invito sottolineava come la partecipazione collettiva dovesse rappresentare un segno di vicinanza alle famiglie colpite e, insieme, un tributo civile a chi era caduto "per la conquista della Libertà soffocata dal nazifascismo".</p>
@@ -338,7 +369,7 @@
     </section>
 
     <!-- Sezione: La Memoria Vivente -->
-    <section class="content-section section-bg-light">
+    <section class="content-section">
       <div class="container">
         <h2 class="section-title">La Memoria Vivente</h2>
         <p>In quell'occasione venne inaugurata all'interno del cimitero della frazione una tomba appositamente costruita per custodire definitivamente le salme. Fino a quel momento i corpi erano stati deposti in una fossa comune, in attesa di una sepoltura definitiva che potesse restituire dignità individuale e memoria pubblica alle vittime.</p>
@@ -358,8 +389,8 @@
       <div class="row">
         <!-- Loghi -->
         <div class="col-12 text-center mb-4">
-          <img src="img/cmq.png" class="logo">
-          <img src="img/fondazionecrc.jpg" class="logo">
+          <img src="img/cmq.png" alt="Logo 1" class="footer-logo">
+          <img src="img/fondazionecrc.jpg" alt="Logo 2" class="footer-logo">
         </div>
 
         <!-- Social e Contatti -->
