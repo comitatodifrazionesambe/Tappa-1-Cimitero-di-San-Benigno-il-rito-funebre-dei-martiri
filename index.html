@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght=300;400;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -169,57 +169,54 @@
       color: var(--dark-text);
     }
 
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 3rem 0;
+    /* Galleria immagini */
+    .history-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2.5rem 0;
     }
 
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      aspect-ratio: 4/3;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .gallery-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.7);
-      color: var(--off-white);
-      padding: 1rem;
+    .history-gallery-item {
+      flex: 1 1 300px;
+      max-width: 400px;
       text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
     }
 
-    .gallery-item:hover .gallery-caption {
-      opacity: 1;
+    .history-gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .history-gallery-item img:hover {
+      transform: scale(1.02);
+    }
+
+    .history-gallery-caption {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      text-align: center;
+      color: var(--dark-text);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* Quote */
+    .quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      text-align: center;
+      color: var(--rust);
+      margin: 2.5rem 0;
+      padding: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-left: 4px solid var(--rust);
+      border-radius: 0 8px 8px 0;
     }
 
     /* Footer */
@@ -271,7 +268,7 @@
       .hero h1 { font-size: 3rem; }
       .hero p { font-size: 1.1rem; }
       .section-title { font-size: 2rem; }
-      .gallery { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+      .history-gallery { gap: 1.5rem; }
     }
 
     @media (max-width: 768px) {
@@ -279,7 +276,7 @@
       .hero-content { padding: 1.5rem; }
       .content-section { padding: 3rem 0; }
       .hero h1 { font-size: 2.5rem; }
-      .gallery { grid-template-columns: 1fr; }
+      .history-gallery { flex-direction: column; align-items: center; }
       .logo, .footer-logo { height: 35px; margin: 0 0.5rem; }
     }
   </style>
@@ -335,24 +332,30 @@
     <section class="content-section">
       <div class="container">
         <h2 class="section-title">La Grande Cerimonia</h2>
-        <p>Il 18 novembre 1945 la frazione fu teatro di una grande cerimonia commemorativa, annunciata pubblicamente dal sindaco con un manifesto rivolto ai cittadini. L'invito sottolineava come la partecipazione collettiva dovesse rappresentare un segno di vicinanza alle famiglie colpite e, insieme, un tributo civile a chi era caduto "per la conquista della Libertà soffocata dal nazifascismo".</p>
+        <p>Il 18 novembre 1945 la frazione fu teatro di una grande cerimonia commemorativa, annunciata pubblicamente dal sindaco con un manifesto rivolto ai cittadini. L’invito sottolineava come la partecipazione collettiva dovesse rappresentare un segno di vicinanza alle famiglie colpite e, insieme, un tributo civile a chi era caduto “per la conquista della Libertà soffocata dal nazifascismo”.</p>
 
-        <p>La giornata si aprì con un momento commemorativo nel luogo dell'eccidio: lo scoprimento di un ricordo marmoreo, la celebrazione della messa e l'orazione ufficiale delle autorità. Seguirono poi le solenni esequie dei tredici caduti, accompagnate da una straordinaria partecipazione popolare.</p>
+        <p>La giornata si aprì con un momento commemorativo nel luogo dell’eccidio: lo scoprimento di un ricordo marmoreo, la celebrazione della messa e l’orazione ufficiale delle autorità. Seguirono poi le solenni esequie dei tredici caduti, accompagnate da una straordinaria partecipazione popolare.</p>
 
-        <!-- Immagine dei funerali -->
-        <img src="img/funerali.jpg" alt="Funerali dei martiri di San Benigno, 18 novembre 1945" class="funeral-image">
-        <p class="image-caption">Il corteo funebre del 18 novembre 1945, un momento di condivisione del lutto e di omaggio ai martiri.</p>
-      </div>
-    </section>
+        <!-- Galleria immagini -->
+        <div class="history-gallery">
+          <div class="history-gallery-item">
+            <img src="2.jpeg" alt="Immagine storica della cerimonia">
+            <p class="history-gallery-caption">2.jpeg</p>
+          </div>
+          <div class="history-gallery-item">
+            <img src="1(1).jpeg" alt="Corteo funebre">
+            <p class="history-gallery-caption">1(1).jpeg</p>
+          </div>
+          <div class="history-gallery-item">
+            <img src="3.jpeg" alt="Manifesto commemorativo">
+            <p class="history-gallery-caption">3.jpeg</p>
+          </div>
+        </div>
 
-    <!-- Sezione: La Memoria Vivente -->
-    <section class="content-section">
-      <div class="container">
-        <h2 class="section-title">La Memoria Vivente</h2>
-        <p>In quell'occasione venne inaugurata all'interno del cimitero della frazione una tomba appositamente costruita per custodire definitivamente le salme. Fino a quel momento i corpi erano stati deposti in una fossa comune, in attesa di una sepoltura definitiva che potesse restituire dignità individuale e memoria pubblica alle vittime.</p>
+        <p>In quell’occasione venne inaugurata all’interno del cimitero della frazione una tomba appositamente costruita per custodire definitivamente le salme. Fino a quel momento i corpi erano stati deposti in una fossa comune, in attesa di una sepoltura definitiva che potesse restituire dignità individuale e memoria pubblica alle vittime.</p>
 
         <div class="quote">
-          La lapide reca ancora oggi la scritta "Caduti per rappresaglia fascista", sintesi di una memoria che la comunità ha voluto consegnare alle generazioni successive.
+          La lapide reca ancora oggi la scritta “Caduti per rappresaglia fascista”, sintesi di una memoria che la comunità ha voluto consegnare alle generazioni successive.
         </div>
 
         <p>Ogni anno, il 2 febbraio, San Benigno rinnova questo ricordo con una celebrazione religiosa, una cerimonia civile e la deposizione di una corona di fiori nel luogo esatto della fucilazione, davanti alla lapide che riporta i nomi delle vittime. Alla loro memoria è dedicata anche la piazza centrale del paese.</p>
@@ -366,8 +369,8 @@
       <div class="row">
         <!-- Loghi -->
         <div class="col-12 text-center mb-4">
-          <img src="img/cmq.png" alt="Logo 1" class="footer-logo">
-          <img src="img/fondazionecrc.jpg" alt="Logo 2" class="footer-logo">
+          <img src="img/cmq.png" alt="Logo Comune" class="footer-logo">
+          <img src="img/fondazionecrc.jpg" alt="Logo Fondazione CRC" class="footer-logo">
         </div>
 
         <!-- Social e Contatti -->
@@ -375,7 +378,9 @@
           <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
             <h5>Seguici</h5>
             <div class="social-icons">
-              <a href="https://www.instagram.com/comitatofrazione_sanbenigno/"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.instagram.com/comitatofrazione_sanbenigno/" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
             </div>
           </div>
 
@@ -388,7 +393,7 @@
 
         <!-- Credits -->
         <div class="footer-bottom">
-          <p>&copy; 2026 San Benigno | Tutti i diritti riservati</p>
+          <p>&copy; 2026 San Benigno | Fare memoria per tracciare nuovi percorsi | Tutti i diritti riservati</p>
         </div>
       </div>
     </div>
