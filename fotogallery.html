@@ -282,6 +282,38 @@
       .gallery { grid-template-columns: 1fr; }
       .logo, .footer-logo { height: 35px; margin: 0 0.5rem; }
     }
+
+    /* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  overflow: auto;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  margin: auto;
+  display: block;
+  padding: 20px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
