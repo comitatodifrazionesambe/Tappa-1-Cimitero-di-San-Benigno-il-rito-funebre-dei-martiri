@@ -1,154 +1,675 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cimitero di San Benigno</title>
-  <meta name="description" content="Un luogo di memoria, riflessione e responsabilità collettiva dedicato ai martiri della Candelora." />
-  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
-  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
-  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap)" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cimitero di San Benigno — Memoria e Riflessione</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icone social/contatti) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      /* Palette: terra bruciata, verde ulivo scuro, pietra calda, ottone spento */
+      --terracotta: #9a4b2e;
+      --terracotta-deep: #7a3a22;
+      --olive: #3d4a36;
+      --stone: #ece6da;
+      --stone-light: #f7f3ea;
+      --ink: #2b241f;
+      --ink-soft: #5c5248;
+      --brass: #a8823f;
+      --hairline: rgba(43, 36, 31, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: var(--stone-light);
+      color: var(--ink);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Skip to content for accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 2000;
+      background: var(--stone-light);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    /* ===== Header ===== */
+    .site-header {
+      background-color: var(--stone-light);
+      border-bottom: 1px solid var(--hairline);
+      position: sticky;
+      top: 0;
+      z-index: 500;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1.5rem;
+    }
+
+    .brand-logos {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .brand-logos img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
+    .main-nav a {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--ink-soft);
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.25s ease;
+    }
+
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: var(--terracotta);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      color: var(--terracotta-deep);
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--hairline);
+      border-radius: 6px;
+      padding: 0.5rem 0.7rem;
+      font-size: 1.1rem;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      min-height: 78vh;
+      display: flex;
+      align-items: flex-end;
+      background-color: var(--ink);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/Commemorazione-eccidio-di-San-Benigno_1.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(15%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(20, 16, 13, 0.55) 0%,
+        rgba(20, 16, 13, 0.35) 40%,
+        rgba(20, 16, 13, 0.92) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 4rem 0 3.2rem;
+      color: var(--stone-light);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light-rust, #d9a878);
+      margin: 0 0 1rem;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.05;
+      margin: 0 0 1.2rem;
+      max-width: 16ch;
+    }
+
+    .hero p {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      font-size: 1.15rem;
+      max-width: 42ch;
+      color: rgba(247, 243, 234, 0.88);
+      margin: 0;
+    }
+
+    .hero-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(247, 243, 234, 0.25);
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(247, 243, 234, 0.75);
+    }
+
+    /* ===== Content sections ===== */
+    .content-section {
+      padding: 5.5rem 0;
+    }
+
+    .content-section.alt {
+      background-color: var(--stone);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1.1rem;
+      margin-bottom: 2.6rem;
+    }
+
+    .section-number {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--brass);
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: var(--ink);
+      font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+      margin: 0;
+      position: relative;
+      flex-grow: 1;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      margin-top: 0.7rem;
+      width: 48px;
+      height: 3px;
+      background-color: var(--terracotta);
+    }
+
+    .content-section p {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.08rem;
+      color: var(--ink-soft);
+      max-width: 68ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .content-section p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .lede {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.5;
+      max-width: 62ch;
+    }
+
+    /* ===== Gallery ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+      margin: 2.8rem 0;
+    }
+
+    .gallery.single {
+      grid-template-columns: minmax(260px, 480px);
+      justify-content: center;
+    }
+
+    figure.frame {
+      margin: 0;
+      background-color: var(--stone-light);
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    figure.frame .img-box {
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+
+    figure.frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(8%) saturate(92%);
+      transition: transform 0.5s ease;
+    }
+
+    figure.frame:hover img {
+      transform: scale(1.04);
+    }
+
+    figcaption {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      padding: 0.85rem 1rem;
+      border-top: 1px solid var(--hairline);
+      letter-spacing: 0.01em;
+    }
+
+    /* ===== Quote / pull ===== */
+    .quote-block {
+      position: relative;
+      margin: 3rem 0;
+      padding: 2.2rem 2.6rem;
+      background-color: var(--olive);
+      border-radius: 2px;
+    }
+
+    .quote-block p {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: var(--stone-light) !important;
+      margin: 0 !important;
+      max-width: 56ch;
+    }
+
+    .quote-block .quote-mark {
+      font-family: 'Fraunces', serif;
+      font-size: 3.5rem;
+      color: var(--brass);
+      line-height: 0.6;
+      display: block;
+      margin-bottom: 0.4rem;
+      opacity: 0.85;
+    }
+
+    /* ===== Annual remembrance strip ===== */
+    .remembrance {
+      background-color: var(--terracotta-deep);
+      color: var(--stone-light);
+      padding: 3.4rem 0;
+    }
+
+    .remembrance .wrap {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .remembrance-date {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2.4rem;
+      flex-shrink: 0;
+      border-right: 1px solid rgba(247, 243, 234, 0.3);
+      padding-right: 2.2rem;
+    }
+
+    .remembrance-text p {
+      margin: 0;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(247, 243, 234, 0.92);
+      max-width: 56ch;
+    }
+
+    /* ===== Footer ===== */
+    .site-footer {
+      background-color: var(--ink);
+      color: var(--stone-light);
+      padding: 3.5rem 0 1.6rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid rgba(247, 243, 234, 0.12);
+    }
+
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .footer-logos img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+
+    .footer-grid h5 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin: 0 0 1rem;
+    }
+
+    .footer-grid p {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+      color: rgba(247, 243, 234, 0.82);
+    }
+
+    .footer-grid a {
+      text-decoration: none;
+      color: rgba(247, 243, 234, 0.82);
+      transition: color 0.25s ease;
+    }
+
+    .footer-grid a:hover {
+      color: var(--brass);
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(247, 243, 234, 0.25);
+      border-radius: 50%;
+      margin-right: 0.6rem;
+      font-size: 1rem;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .social-icons a:hover {
+      border-color: var(--brass);
+      color: var(--brass);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.6rem;
+      font-size: 0.85rem;
+      color: rgba(247, 243, 234, 0.55);
+      font-family: 'Source Sans 3', sans-serif;
+      letter-spacing: 0.01em;
+    }
+
+    /* ===== Reduced motion ===== */
+    @media (prefers-reduced-motion: reduce) {
+      figure.frame img,
+      .main-nav a::after {
+        transition: none;
+      }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 860px) {
+      .main-nav { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .header-inner { position: relative; }
+
+      .main-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--stone-light);
+        border-bottom: 1px solid var(--hairline);
+        padding: 1rem 1.5rem 1.4rem;
+        gap: 1rem;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+      }
+
+      .hero { min-height: 64vh; }
+      .content-section { padding: 3.6rem 0; }
+      .quote-block { padding: 1.8rem; }
+      .remembrance-date {
+        border-right: none;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-logos img { height: 30px; }
+      .hero h1 { max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">San Benigno</div>
-      <nav class="nav">
-        <a href="index.html" class="active">Memoria</a>
+
+  <a href="#main" class="skip-link">Vai al contenuto</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand-logos" href="index.html" aria-label="Torna alla home">
+        <img src="img/cmq.png" alt="Logo Comune di Cuneo">
+        <img src="img/fondazionecrc.jpg" alt="Logo Fondazione CRC">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Apri il menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Home</a>
         <a href="fotogallery.html">Fotogallery</a>
         <a href="partner.html">Partner</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero hero-memory">
-      <div class="container">
-        <span class="eyebrow">Luogo della memoria</span>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="wrap">
+        <p class="hero-eyebrow">San Benigno · Cuneo</p>
         <h1>Cimitero di San Benigno</h1>
-        <p class="lead">
-          Un luogo di memoria, riflessione e responsabilità collettiva, dove la storia dei martiri della Candelora
-          continua a vivere nel cuore della comunità.
-        </p>
+        <p>Un luogo di memoria, riflessione e responsabilità collettiva, dove la storia dei martiri della Candelora vive nel cuore della comunità.</p>
+        <div class="hero-date">2 febbraio 1945 — il giorno della rappresaglia</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="container narrow">
-        <div class="section-heading">
-          <span class="section-kicker">Storia</span>
-          <h2>La sepoltura</h2>
+  <main id="main">
+    <!-- Sezione: La Sepoltura -->
+    <section class="content-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-number">01</span>
+          <h2 class="section-title">La sepoltura</h2>
         </div>
+        <p class="lede">La fine della guerra rese possibile un gesto atteso per mesi dalla comunità di San Benigno: dare degna sepoltura ai tredici giovani uccisi il 2 febbraio 1945 nella rappresaglia nazifascista.</p>
 
-        <div class="card card-text">
-          <p>
-            La fine della guerra rese possibile un gesto atteso per mesi dalla comunità di San Benigno:
-            dare degna sepoltura ai tredici giovani uccisi il 2 febbraio 1945 nella rappresaglia nazifascista.
-          </p>
-        </div>
-
-        <div class="media-grid">
-          <article class="media-card">
-            <div class="media-placeholder">Immagine storica della cerimonia</div>
-            <div class="media-caption">Corteo funebre</div>
-          </article>
-          <article class="media-card">
-            <div class="media-placeholder">Manifesto funebre</div>
-            <div class="media-caption">Le 13 vittime della rappresaglia</div>
-          </article>
+        <div class="gallery">
+          <figure class="frame">
+            <div class="img-box"><img src="./img/3.jpeg" alt="Manifesto funebre del 1945"></div>
+            <figcaption>San Benigno, 1945 — documento dell'epoca legato alle esequie dei caduti</figcaption>
+          </figure>
+          <figure class="frame">
+            <div class="img-box"><img src="./img/4.jpeg" alt="Corteo funebre delle vittime della rappresaglia"></div>
+            <figcaption>San Benigno, 1945 — documento dell'epoca legato alle esequie dei caduti</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="container narrow">
-        <div class="section-heading">
-          <span class="section-kicker">Commemorazione</span>
-          <h2>I funerali</h2>
+    <!-- Sezione: I Funerali -->
+    <section class="content-section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-number">02</span>
+          <h2 class="section-title">I funerali</h2>
         </div>
 
-        <div class="content-stack">
-          <div class="card card-text">
-            <p>
-              Il 18 novembre 1945 la frazione fu teatro di una grande cerimonia commemorativa, annunciata pubblicamente
-              dal sindaco con un manifesto rivolto ai cittadini. L'invito sottolineava come la partecipazione collettiva
-              dovesse rappresentare un segno di vicinanza alle famiglie colpite e, insieme, un tributo civile a chi era
-              caduto per la conquista della Libertà soffocata dal nazifascismo.
-            </p>
-          </div>
+        <p>Il 18 novembre 1945 la frazione fu teatro di una grande cerimonia commemorativa, annunciata pubblicamente dal sindaco con un manifesto rivolto ai cittadini. L'invito sottolineava come la partecipazione collettiva dovesse rappresentare un segno di vicinanza alle famiglie colpite e, insieme, un tributo civile a chi era caduto per la conquista della libertà soffocata dal nazifascismo.</p>
 
-          <div class="card card-text">
-            <p>
-              La giornata si aprì con un momento commemorativo nel luogo dell'eccidio: lo scoprimento di un ricordo
-              marmoreo, la celebrazione della messa e l'orazione ufficiale delle autorità. Seguirono poi le solenni
-              esequie dei tredici caduti, accompagnate da una straordinaria partecipazione popolare.
-            </p>
-          </div>
+        <p>La giornata si aprì con un momento commemorativo nel luogo dell'eccidio: lo scoprimento di un ricordo marmoreo, la celebrazione della messa e l'orazione ufficiale delle autorità. Seguirono poi le solenni esequie dei tredici caduti, accompagnate da una straordinaria partecipazione popolare.</p>
 
-          <div class="media-grid single-mobile">
-            <article class="media-card">
-              <div class="media-placeholder">Manifesto commemorativo</div>
-              <div class="media-caption">Il corteo funebre del 18 novembre 1945</div>
-            </article>
-          </div>
+        <div class="gallery single">
+          <figure class="frame">
+            <div class="img-box"><img src="./img/2.jpeg" alt="Manifesto commemorativo del 18 novembre 1945"></div>
+            <figcaption>San Benigno, 18 novembre 1945 — documento dell'epoca legato alle esequie dei caduti</figcaption>
+          </figure>
+        </div>
 
-          <div class="card card-text">
-            <p>
-              In quell'occasione venne inaugurata all'interno del cimitero della frazione una tomba appositamente
-              costruita per custodire definitivamente le salme. Fino a quel momento i corpi erano stati deposti in una
-              fossa comune, in attesa di una sepoltura definitiva che potesse restituire dignità individuale e memoria
-              pubblica alle vittime.
-            </p>
-          </div>
+        <p>In quell'occasione venne inaugurata all'interno del cimitero della frazione una tomba appositamente costruita per custodire definitivamente le salme. Fino a quel momento i corpi erano stati deposti in una fossa comune, in attesa di una sepoltura definitiva che potesse restituire dignità individuale e memoria pubblica alle vittime.</p>
 
-          <blockquote class="quote">
-            La lapide reca ancora oggi la scritta "Caduti per rappresaglia fascista", sintesi di una memoria che la
-            comunità ha voluto consegnare alle generazioni successive.
-          </blockquote>
+        <div class="quote-block">
+          <span class="quote-mark">&ldquo;</span>
+          <p>La lapide reca ancora oggi la scritta "Caduti per rappresaglia fascista", sintesi di una memoria che la comunità ha voluto consegnare alle generazioni successive.</p>
+        </div>
 
-          <div class="media-grid">
-            <article class="media-card">
-              <div class="media-placeholder">Lapide commemorativa</div>
-              <div class="media-caption">Il corteo funebre</div>
-            </article>
-          </div>
+        <div class="gallery single">
+          <figure class="frame">
+            <div class="img-box"><img src="./img/5.jpeg" alt="Lapide commemorativa nel cimitero di San Benigno"></div>
+            <figcaption>San Benigno, 1945 — documento dell'epoca legato alle esequie dei caduti</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-          <div class="card card-highlight">
-            <h3>Una memoria che si rinnova ogni anno</h3>
-            <p>
-              Ogni 2 febbraio, San Benigno rinnova questo ricordo con una celebrazione religiosa, una cerimonia civile
-              e la deposizione di una corona di fiori nel luogo esatto della fucilazione, davanti alla lapide che
-              riporta i nomi delle vittime. Alla loro memoria è dedicata anche la piazza centrale del paese.
-            </p>
-          </div>
+    <!-- Strip: ricorrenza annuale -->
+    <section class="remembrance">
+      <div class="wrap">
+        <span class="remembrance-date">2 febbraio</span>
+        <div class="remembrance-text">
+          <p>Ogni anno San Benigno rinnova il ricordo con una celebrazione religiosa, una cerimonia civile e la deposizione di una corona di fiori nel luogo esatto della fucilazione, davanti alla lapide che riporta i nomi delle vittime. Alla loro memoria è dedicata anche la piazza centrale del paese.</p>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="footer-title">San Benigno</div>
-        <p>Fare memoria per tracciare nuovi percorsi.</p>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logos">
+            <img src="img/cmq.png" alt="Logo Comune di Cuneo">
+            <img src="img/fondazionecrc.jpg" alt="Logo Fondazione CRC">
+          </div>
+        </div>
+
+        <div>
+          <h5>Seguici</h5>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/comitatofrazione_sanbenigno/" aria-label="Instagram" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h5>Contatti</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Via dell'Abbazia, 5 — San Benigno</p>
+          <p><a href="mailto:cdq.sanbenigno@email.comune.cuneo.it"><i class="fas fa-envelope me-2"></i>cdq.sanbenigno@email.comune.cuneo.it</a></p>
+        </div>
       </div>
 
-      <div>
-        <div class="footer-title">Contatti</div>
-        <p>Via dell'Abbazia, 5 - San Benigno</p>
-        <p><a href="mailto:cdq.sanbenigno@email.comune.cuneo.it">cdq.sanbenigno@email.comune.cuneo.it</a></p>
-      </div>
-
-      <div>
-        <div class="footer-title">Partner istituzionali</div>
-        <p>Comune</p>
-        <p>Fondazione CRC</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2026 San Benigno | Tutti i diritti riservati
+      <p class="footer-bottom">&copy; 2026 San Benigno · Fare memoria per tracciare nuovi percorsi · Tutti i diritti riservati</p>
     </div>
   </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
 </body>
 </html>
