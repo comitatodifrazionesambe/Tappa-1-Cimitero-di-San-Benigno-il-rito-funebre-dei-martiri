@@ -64,9 +64,8 @@
 
     /* Hero Section */
     .hero {
-      background: url('img/foto_sfondo.jpg');
+      background: url('img/foto_sfondo.jpg') no-repeat center center;
       background-size: cover;
-      background-position: center;
       color: white;
       padding: 150px 0;
       text-align: center;
@@ -81,7 +80,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(42, 77, 58, 0.7);
     }
 
     .hero-content {
@@ -99,7 +98,7 @@
       font-weight: 700;
       color: var(--off-white);
       margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
       animation: fadeInDown 1s ease-out;
     }
 
@@ -128,14 +127,7 @@
       border-radius: 0;
       position: relative;
       overflow: hidden;
-    }
-
-    .content-section:nth-child(odd) {
       background-color: var(--off-white);
-    }
-
-    .content-section:nth-child(even) {
-      background-color: var(--light-gray);
     }
 
     .section-title {
@@ -182,6 +174,10 @@
       flex: 1 1 300px;
       max-width: 400px;
       text-align: center;
+      background-color: var(--light-gray);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .history-gallery-item img {
@@ -190,6 +186,7 @@
       border-radius: 8px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
+      background-color: transparent;
     }
 
     .history-gallery-item img:hover {
@@ -203,6 +200,9 @@
       color: var(--dark-text);
       margin-top: 1rem;
       font-style: italic;
+      background-color: transparent;
+      padding: 0.5rem;
+      border-radius: 0;
     }
 
     /* Quote */
@@ -214,7 +214,7 @@
       color: var(--rust);
       margin: 2.5rem 0;
       padding: 1.5rem;
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: var(--light-gray);
       border-left: 4px solid var(--rust);
       border-radius: 0 8px 8px 0;
     }
@@ -290,8 +290,8 @@
         <div class="container-fluid">
           <!-- Loghi -->
           <a class="navbar-brand" href="#">
-            <img src="img/cmq.png" class="logo">
-            <img src="img/fondazionecrc.jpg" class="logo">
+            <img src="img/cmq.png" class="logo" alt="Logo Comune">
+            <img src="img/fondazionecrc.jpg" class="logo" alt="Logo Fondazione CRC">
           </a>
 
           <!-- Menu -->
@@ -328,16 +328,14 @@
       </div>
     </section>
 
-    <div>
-      <div class="history-gallery">
-        <div class="history-gallery-item">
-          <img src="./img/3.jpeg" alt="Immagine storica della cerimonia">
-          <p class="history-gallery-caption">Il manifesto funebre</p>
-        </div>
-        <div class="history-gallery-item">
-          <img src="./img/4.jpeg" alt="Corteo funebre">
-          <p class="history-gallery-caption">Le 13 vittime della rappresaglia</p>
-        </div>
+    <div class="history-gallery">
+      <div class="history-gallery-item">
+        <img src="./img/3.jpeg" alt="Manifesto funebre">
+        <p class="history-gallery-caption">Manifesto funebre per la cerimonia commemorativa</p>
+      </div>
+      <div class="history-gallery-item">
+        <img src="./img/4.jpeg" alt="Le 13 vittime della rappresaglia">
+        <p class="history-gallery-caption">Le 13 vittime della rappresaglia nazifascista</p>
       </div>
     </div>
 
@@ -352,8 +350,8 @@
         <!-- Galleria immagini -->
         <div class="history-gallery">
           <div class="history-gallery-item">
-            <img src="./img/2.jpeg" alt="Manifesto commemorativo">
-            <p class="history-gallery-caption">Il corteo funebre del 18 novembre 1945</p>
+            <img src="./img/2.jpeg" alt="Corteo funebre del 18 novembre 1945">
+            <p class="history-gallery-caption">Corteo funebre del 18 novembre 1945</p>
           </div>
         </div>
 
@@ -364,8 +362,8 @@
         </div>
         <div class="history-gallery">
           <div class="history-gallery-item">
-            <img src="./img/5.jpeg" alt="Lapide commemorativa">
-            <p class="history-gallery-caption">La lapide commemorativa</p>
+            <img src="./img/5.jpeg" alt="Lapide commemorativa con i nomi delle vittime">
+            <p class="history-gallery-caption">Lapide commemorativa con i nomi delle vittime</p>
           </div>
         </div>
 
